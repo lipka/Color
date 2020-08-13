@@ -1,6 +1,7 @@
 # Color
 
 [![Version](https://img.shields.io/github/release/lipka/Color.svg)](https://github.com/lipka/Color/releases)
+[![Build Status](https://github.com/lipka/Color/workflows/Tests/badge.svg)](https://github.com/lipka/Color/actions)
 ![Swift Version](https://img.shields.io/badge/swift-5.2.0-orange.svg)
 
 Simple extensions for working with `Color` (Swift UI) and `UIColor` (UIKit).
