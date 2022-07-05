@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/lipka/Color/workflows/Tests/badge.svg)](https://github.com/lipka/Color/actions)
 ![Swift Version](https://img.shields.io/badge/swift-5.2.0-orange.svg)
 
-Simple extensions for working with `Color` (Swift UI) and `UIColor` (UIKit).
+Simple extensions for working with `Color` (SwiftUI) and `UIColor` (UIKit).
 
 ## Installation
 
@@ -49,4 +49,14 @@ import Button
 let button = Button()
 button.setBackgroundColor(.blue, for: .normal)
 button.setBackgroundColor(.blue.adjust(0.1), for: .highlighted)
+```
+
+### Dynamic Colors
+
+Shorthand notation for creating dynamic colors (light/dark mode).
+
+```swift
+Color(light: Color.white, dark: Color.black)
+
+UIColor(light: UIColor.white, dark: UIColor.black)
 ```
