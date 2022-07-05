@@ -4,23 +4,30 @@ struct HexComponents {
     let red: Double
     let green: Double
     let blue: Double
+    let opacity: Double
 
-    init(hex string: String) {
-        var hex: String
-        if string.hasPrefix("#") {
-            hex = String(string.dropFirst())
-        } else {
-            hex = string
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        let scanner = Scanner(string: hex)
+
+        var value: UInt64 = 0
+        scanner.scanHexInt64(&value)
+
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)
+            (r, g, b, a) = ((value >> 8) * 17, (value >> 4 & 0xF) * 17, (value & 0xF) * 17, 255)
+        case 6: // RGB (24-bit)
+            (r, g, b, a) = (value >> 16, value >> 8 & 0xFF, value & 0xFF, 255)
+        case 8: // RGBA (32-bit)
+            (r, g, b, a) = (value >> 24, value >> 16 & 0xFF, value >> 8 & 0xFF, value & 0xFF)
+        default:
+            (r, g, b, a) = (1, 1, 1, 1)
         }
 
-        if hex.count == 3 {
-            for (index, char) in hex.enumerated() {
-                hex.insert(char, at: hex.index(hex.startIndex, offsetBy: index * 2))
-            }
-        }
-
-        self.red = Double((Int(hex, radix: 16)! >> 16) & 0xFF) / 255
-        self.green = Double((Int(hex, radix: 16)! >> 8) & 0xFF) / 255
-        self.blue = Double((Int(hex, radix: 16)! >> 0) & 0xFF) / 255
+        self.red = Double(r) / 255
+        self.green = Double(g) / 255
+        self.blue = Double(b) / 255
+        self.opacity = Double(a) / 255
     }
 }

@@ -20,20 +20,14 @@ For installation with [Swift Package Manager](https://github.com/apple/swift-pac
 
 ### Hex Colors
 
-You can use the convenience initializers to initialize a color with a hex code.
-
-#### Color (Swift UI)
+You can use the convenience initializers to initialize a color with a hex code. Supports 12-bit (`FFF`), 24-bit (`FFFFFF`) and 32-bit RGBA (`FFFFFFFF`) hex codes, that can optionally be prefixed with a pound sign.
 
 ```swift
 Color(hex: "FF00FF")
-Color(hex: "F0F", alpha: 0.5)
-```
+Color(hex: "#F0F", alpha: 0.5)
 
-#### UIColor (UIKit)
-
-```swift
 UIColor(hex: "FF00FF")
-UIColor(hex: "F0F", alpha: 0.5)
+UIColor(hex: "#F0F", alpha: 0.5)
 ```
 
 ### Adjusting Colors
