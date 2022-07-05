@@ -1,7 +1,7 @@
 import UIKit
 
 @available(iOS 13.0, *)
-extension UIColor {
+public extension UIColor {
     convenience init(
         light lightColor: @escaping @autoclosure () -> UIColor,
         dark darkColor: @escaping @autoclosure () -> UIColor

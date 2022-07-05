@@ -1,7 +1,7 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-extension Color {
+public extension Color {
     init(
         light lightColor: @escaping @autoclosure () -> Color,
         dark darkColor: @escaping @autoclosure () -> Color
